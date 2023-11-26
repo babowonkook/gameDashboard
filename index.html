@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Simple Drag and Drop Lean Kanban Board Tool</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.css'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html
+<header>
+  <h1>턴누리<br/><span>Game Board</span></h1>
+</header>
+
+ -->
+
+<div class="app-layout">
+  <div class="playing box">게임중
+    <ul class="columns">
+
+      <li class="column to-do-column">
+        <div class="column-header">
+          <h4>1번 게임</h4>
+        </div>
+        <ul class="task-list" id="to-do">
+          <li class="task">
+            <p>최근환</p>
+          </li>
+          <li class="task">
+            <p>최준상</p>
+          </li>
+          <li class="task">
+            <p>손용우</p>
+          </li>
+          <li class="task">
+            <p>황원국</p>
+          </li>
+        </ul>
+      </li>
+
+      <li class="column to-do-column">
+        <div class="column-header">
+          <h4>2번 게임</h4>
+        </div>
+        <ul class="task-list" id="to-do">
+          <li class="task">
+            <p>이양임</p>
+          </li>
+          <li class="task">
+            <p>김해정</p>
+          </li>
+          <li class="task">
+            <p>성효인</p>
+          </li>
+          <li class="task">
+            <p>안세희</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="scheduled box">게임 예정
+    <ul class="columns">
+      <li class="column doing-column">
+        <div class="column-header">
+          <h4>1번 대기</h4>
+        </div>
+        <ul class="task-list" id="doing">
+          <li class="task">
+            <p>박부국</p>
+          </li>
+          <li class="task">
+            <p>민호성</p>
+          </li>
+          <li class="task">
+            <p>변용섭</p>
+          </li>
+          <li class="task">
+            <p>이석봉</p>
+          </li>
+        </ul>
+      </li>
+
+      <li class="column doing-column">
+        <div class="column-header">
+          <h4>2번 대기</h4>
+        </div>
+        <ul class="task-list" id="doing">
+          <li class="task">
+            <p>이상진</p>
+          </li>
+          <li class="task">
+            <p>허어녕</p>
+          </li>
+          <li class="task">
+            <p>박정택</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+  <div class="members box">턴누리 회원
+    <ul>
+      <li class="column done-column">
+        <div class="column-header">
+          <h4>Done</h4>
+        </div>
+        <ul class="task-list" id="done">
+          <li class="task">
+            <p>Ideation</p>
+          </li>
+          <li class="task">
+            <p>Sketches</p>
+          </li>
+        </ul>
+      </li>
+  
+      <li class="column trash-column">
+        <div class="column-header">
+          <h4>Trash</h4>
+        </div>
+        <ul class="task-list" id="trash">
+          <li class="task">
+            <p>Interviews</p>
+          </li>
+          <li class="task">
+            <p>Research</p>
+          </li>
+  
+        </ul>
+        <div class="column-button">
+          <button class="button delete-button" onclick="emptyTrash()">Delete</button>
+        </div>
+      </li>
+
+    </ul>
+
+  </div>
+  <div class="waitting box">대기
+    <div class="add-task-container">
+      <input type="text" maxlength="12" id="taskText" placeholder="New Task..." onkeydown="if (event.keyCode == 13)
+                            document.getElementById('add').click()">
+      <button id="add" class="button add-button" onclick="addTask()">Add New Task</button>
+    </div>
+
+  </div>
+  
+</div>
+
+
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.js'></script><script  src="./script.js"></script>
+
+</body>
+</html>
