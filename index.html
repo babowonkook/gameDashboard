@@ -67,7 +67,7 @@
     </ul>
   </div>
   <div class="scheduled box">게임 예정
-    <ul class="columns">
+    <ul id="scheduled" class="columns">
       <li class="column doing-column">
         <div class="column-header">
           <h4>1번 대기</h4>
@@ -132,14 +132,23 @@
           <li class="task">
             <p>똥꾸</p>
           </li>
+          <li class="task">
+            <p>찌찌뽕</p>
+          </li>
+          <li class="task">
+            <p>반딧불</p>
+          </li>
+          <li class="task">
+            <p>헬렐레</p>
+          </li>
         </ul>
       </li>
 
     </ul>
 
     <div class="add-task-container">
-      <input type="text" maxlength="12" id="taskText" placeholder="New Task..." onkeydown="if (event.keyCode == 13) document.getElementById('add').click()">
-      <button id="add" class="button add-button" onclick="addTask()">게스트 추가</button>
+      <input type="text" maxlength="12" id="guestText" placeholder="게스트 추가" onkeydown="if (event.keyCode == 13) document.getElementById('add').click()">
+      <button id="add" class="button add-button" onclick="addGuest()">게스트 추가</button>
     </div>
 
   </div>
