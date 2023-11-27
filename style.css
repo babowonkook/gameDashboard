@@ -140,7 +140,7 @@ li {
 
 .delete-button {
   background-color: #ff4444;
-  margin: 0.1rem auto 0.6rem auto;
+  margin-top: 0.8rem;
 }
 
 .delete-button:hover {
