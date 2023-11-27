@@ -29,7 +29,7 @@ span {
 }
 
 p {
-  font-family: "Arimo", serif;
+  font-family: "Arimo", sans-serif;
 }
 
 a,
@@ -187,7 +187,7 @@ li {
   border: #000013 0.15rem solid;
   border-radius: 0.2rem;
   text-align: center;
-  font-family: "Roboto Slab", serif;
+  font-family: "Arimo", sans-serif;
   height: 4rem;
   width: 7rem;
   margin: auto 0.8rem auto 0.1rem;
