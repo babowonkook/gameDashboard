@@ -53,7 +53,7 @@ footer {
   text-align: center;
 }
 
-.add-task-container {
+.add-player-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -92,7 +92,7 @@ footer {
   text-align: center;
 }
 
-.to-do-column .column-header {
+.playing-column .column-header {
   background: #ff872f;
 }
 
@@ -108,7 +108,7 @@ footer {
   background: #ff4444;
 }
 
-.task-list {
+.player-list {
   min-height: 3rem;
   min-width: 15rem;
 }
@@ -159,7 +159,7 @@ li {
   background-color: #ffdd6e;
 }
 
-.task {
+.player {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -194,7 +194,7 @@ li {
   margin: auto 0.8rem auto 0.1rem;
 }
 
-.task p {
+.player p {
   margin: auto;
 }
 
