@@ -1,6 +1,5 @@
 /* Custom Dragula JS */
-dragula([
-  document.getElementById("to-do"),
+var drake = dragula([
   document.getElementById("doing"),
   document.getElementById("done"),
   document.getElementById("trash"),
@@ -16,45 +15,49 @@ dragula([
     el.className += "ex-moved";
     var childrenLength = target.children.length;
     console.log(childrenLength);
-    if(el.classList.contains('task') && "scheduled" == target.id){
+    if(el.classList.contains('player') && "scheduled" == target.id){
       var idNum = childrenLength++;
       document.getElementById("scheduled").innerHTML +=
         "<li class='column doing-column'>" +
         "<div class='column-header'>" +
         "  <h4>"+idNum+"번 대기</h4>" +
         "</div>" +
-        "<ul class='task-list' id='doing"+idNum+"'>" +
+        "<ul class='player-list' id='doing"+idNum+"'>" +
         "</ul>" +
         "</li>";
 
-      this.cancel;
+      //drake.remove();
     }
     
   })
   .on("over", function(el, container) {
-    container.className += "ex-over";
+    container.className += " ex-over";
   })
   .on("out", function(el, container) {
-    container.className.replace("ex-over", "");
+    container.className.replace(" ex-over", "");
   });
 
-/* Vanilla JS to add a new task */
+/* Vanilla JS to add a new player */
 function addGuest() {
-  /* Get task text from input */
+  /* Get player text from input */
   var inputGuest = document.getElementById("guestText").value.trim();
   if(inputGuest == ''){
     alert("게스트를 입력해주세요.");
     return false;
   } 
-  /* Add task to the 'To Do' column */
+  /* Add player to the 'To Do' column */
   document.getElementById("done").innerHTML +=
-    "<li class='task'><p>" + inputGuest + "</p></li>";
-  /* Clear task text from input after adding task */
+    "<li class='player'><p>" + inputGuest + "</p></li>";
+  /* Clear player text from input after adding player */
   document.getElementById("guestText").value = "";
 }
 
-/* Vanilla JS to delete tasks in 'Trash' column */
+function endGame() {
+  alert("게임 종료 되었습니다.");
+}
+
+/* Vanilla JS to delete players in 'Trash' column */
 function emptyTrash() {
-  /* Clear tasks from 'Trash' column */
+  /* Clear players from 'Trash' column */
   document.getElementById("trash").innerHTML = "";
 }
