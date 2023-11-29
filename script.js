@@ -2,7 +2,7 @@
 var drake = dragula([
   document.getElementById("doing"),
   document.getElementById("done"),
-  document.getElementById("trash"),
+  document.getElementById("waiting"),
   document.getElementById("scheduled")
 ]).on("drag", function(el) {
     el.className.replace("ex-moved", "");
@@ -18,7 +18,7 @@ var drake = dragula([
     if(el.classList.contains('player') && "scheduled" == target.id){
       var idNum = childrenLength++;
       document.getElementById("scheduled").innerHTML +=
-        "<li class='column doing-column'>" +
+        "<li class='column scheduled-column'>" +
         "<div class='column-header'>" +
         "  <h4>"+idNum+"번 대기</h4>" +
         "</div>" +
@@ -59,5 +59,39 @@ function endGame() {
 /* Vanilla JS to delete players in 'Trash' column */
 function emptyTrash() {
   /* Clear players from 'Trash' column */
-  document.getElementById("trash").innerHTML = "";
+  document.getElementById("waiting").innerHTML = "";
+}
+
+$('button[name="startGame"]').click(function(){
+  var match = makeMatch('playing');
+  match.appendTo('#playing');
+  $(this).parent().parent().find('li.player').appendTo(match.find('.player-list'));
+  $(this).parents('.scheduled-column').remove();
+});
+
+
+// $('button[name="endGame"]').click(function(){
+//   $(this).parent().parent().find('li.player').appendTo('#waiting');
+//   $(this).parents('.playing-column').remove();
+// });
+
+$(document).on('click', 'button[name="endGame"]', function(){
+  $(this).parent().parent().find('li.player').appendTo('#waiting');
+  $(this).parents('.playing-column').remove();
+});
+
+function makeMatch(type){
+  var idNum = $('#'+type).find('.column').length+1;
+  var $match = $("<li class='column "+type+"-column'>" +
+  "<div class='column-header'>" +
+  "  <h4>"+idNum+"번 대기</h4>" +
+  "</div>" +
+  "<ul class='player-list' id='" + type +idNum+"'>" +
+  "</ul>" +
+  "<div class='column-button'>" +
+  "  <button class='button delete-button' name='endGame'>종료</button>" +
+  "</div>" +
+  "</li>");
+  
+  return $match;
 }
