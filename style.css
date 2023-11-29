@@ -96,7 +96,7 @@ footer {
   background: #ff872f;
 }
 
-.doing-column .column-header {
+.scheduled-column .column-header {
   background: #13a4d9;
 }
 
@@ -104,7 +104,7 @@ footer {
   background: #15d072;
 }
 
-.trash-column .column-header {
+.waiting-column .column-header {
   background: #ff4444;
 }
 
