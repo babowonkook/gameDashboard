@@ -17,7 +17,7 @@
 
 <div class="app-layout">
   <div class="playing box">게임중
-    <ul class="columns">
+    <ul id="playing" class="columns">
 
       <li class="column playing-column">
         <div class="column-header">
@@ -38,7 +38,7 @@
           </li>
         </ul>
         <div class="column-button">
-          <button class="button delete-button" onclick="endGame()">종료</button>
+          <button class="button delete-button" name="endGame">종료</button>
         </div>
       </li>
 
@@ -61,14 +61,14 @@
           </li>
         </ul>
         <div class="column-button">
-          <button class="button delete-button" onclick="endGame()">종료</button>
+          <button class="button delete-button" name="endGame">종료</button>
         </div>
       </li>
     </ul>
   </div>
   <div class="scheduled box">게임 예정
     <ul id="scheduled" class="columns">
-      <li class="column doing-column">
+      <li class="column scheduled-column">
         <div class="column-header">
           <h4>1번 대기</h4>
         </div>
@@ -87,11 +87,11 @@
           </li>
         </ul>
         <div class="column-button">
-          <button class="button delete-button" onclick="emptyTrash()">시작</button>
+          <button class="button delete-button" name="startGame">시작</button>
         </div>
       </li>
 
-      <li class="column doing-column">
+      <li class="column scheduled-column">
         <div class="column-header">
           <h4>2번 대기</h4>
         </div>
@@ -154,11 +154,11 @@
   </div>
   <div class="waitting box">대기
     <ul class="columns">
-      <li class="column trash-column">
+      <li class="column waiting-column">
         <div class="column-header">
-          <h4>Trash</h4>
+          <h4>대기</h4>
         </div>
-        <ul class="player-list" id="trash">
+        <ul class="player-list" id="waiting">
           <li class="player">
             <p>Interviews</p>
           </li>
