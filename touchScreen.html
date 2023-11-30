@@ -1,0 +1,73 @@
+<style>
+.gu-mirror{position:fixed!important;margin:0!important;z-index:9999!important}.gu-hide{display:none!important}.gu-unselectable{-webkit-user-select:none!important;-moz-user-select:none!important;-ms-user-select:none!important;user-select:none!important}.gu-transit{opacity:.2;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";filter:alpha(opacity=20)}.gu-mirror{opacity:.8;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";filter:alpha(opacity=80)}
+
+body {
+  background: #3d3d3d;
+  padding: 20px;
+  /*사용자는 어떤 콘텐츠도 선택할 수 없습니다.*/
+  -webkit-user-select:none!important;
+  -moz-user-select:none!important;
+  -ms-user-select:none!important;
+  user-select:none!important;
+}
+
+h1 {
+  color: #f3f3f3;
+}
+
+a {
+  color: #ccc;
+}
+
+.container {
+  -ms-touch-action: none !important;
+  border: 2px dotted #ccc;
+  border-radius: 5px;
+  width: 250px;
+  padding: 10px;
+  display: inline;
+  float: left;
+  margin-left: 20px;
+}
+
+.container div {
+  border: 2px solid #f3f3f3;
+  border-radius: 5px;
+  margin: 10px;
+  width: 200px;
+  padding: 10px;
+  color: #fff;
+  cursor: move;
+}
+</style>
+<h1>Easy Drag & Drop with <a href="https://github.com/bevacqua/dragula" target="_blank">Dragula</a>.</h1>
+<div class="wrapper">
+  <div id="left" class="container">
+    <div>Item 1</div>
+    <div>Item 2</div>
+    <div>Item 3</div>
+  </div>
+  <div id="right" class="container">
+    <div   onClick="(function(){
+    alert('Hey i am calling');
+    return false;
+})();return false;" >Item 4</div>
+    <div   onClick="(function(){
+    alert('Hey i am calling');
+    return false;
+})();return false;" >Item 5</div>
+    <div   onClick="(function(){
+    alert('Hey i am calling');
+    return false;
+})();return false;" >Item 6</div>
+  </div>
+</div>
+<script>
+dragula([document.getElementById('left'), document.getElementById('right')])
+.on('drop', function (el) {
+    alert('we dragged');
+});
+  </script>
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/dragula/3.7.2/dragula.min.js'></script>
