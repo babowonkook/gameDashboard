@@ -1,7 +1,7 @@
 .gu-mirror{position:fixed!important;margin:0!important;z-index:9999!important}.gu-hide{display:none!important}.gu-unselectable{-webkit-user-select:none!important;-moz-user-select:none!important;-ms-user-select:none!important;user-select:none!important}.gu-transit{opacity:.2;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";filter:alpha(opacity=20)}.gu-mirror{opacity:.8;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";filter:alpha(opacity=80)}
 
 body {
-  oveflow: hidden;
+   overscroll-behavior-y: none;
   background: #3d3d3d;
   padding: 20px;
   /*사용자는 어떤 콘텐츠도 선택할 수 없습니다.*/
