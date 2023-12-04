@@ -101,7 +101,7 @@ footer {
   background: #13a4d9;
 }
 
-.done-column .column-header {
+.member-column .column-header {
   background: #15d072;
 }
 
@@ -244,7 +244,7 @@ li {
   overscroll-behavior: contain;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-rows: 50vh 50vh;
 }
 
 .playing {
