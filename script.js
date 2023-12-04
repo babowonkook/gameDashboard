@@ -26,8 +26,10 @@ var drake = dragula([
           drake.cancel(true);
         }else if(memberCnt == 4){
           console.log("시작버튼 노출");
-          var btn = makeStartButtonDiv();
-          btn.appendTo($(target).parent());
+          if($(target).parent().find('div.column-button').length == 0){
+            var btn = makeStartButtonDiv();
+            btn.appendTo($(target).parent());
+          }
         }
 
       }
@@ -54,8 +56,6 @@ var drake = dragula([
 $('ul#scheduled ul.player-list').each(function(index, item){
   drake.containers.push(item);
 })
-
-//drake.containers.push($('ul#scheduled ul.player-list'));
 
 /* Vanilla JS to add a new player */
 function addGuest() {
