@@ -1,32 +1,45 @@
 /* Custom Dragula JS */
 var drake = dragula([
-  document.getElementById("doing"),
-  document.getElementById("done"),
+  document.getElementById("member"),
   document.getElementById("waiting"),
   document.getElementById("scheduled")
 ]).on("drag", function(el) {
-    el.className.replace("ex-moved", "");
+    el.className.replace(" ex-moved", "");
   })
   .on("drop", function(el, target, source, sibling) {
     // el: 드래그하고 있는 요소
     // target: el이 드래그 후 놓아진 리스트 요소
     // sibling: 자리에 놓았을 때, 바로 그 다음 요소
     // source: 원래 el이 있던 리스트 요소
-    el.className += "ex-moved";
-    var childrenLength = target.children.length;
-    console.log(childrenLength);
-    if(el.classList.contains('player') && "scheduled" == target.id){
-      var idNum = childrenLength++;
-      document.getElementById("scheduled").innerHTML +=
-        "<li class='column scheduled-column'>" +
-        "<div class='column-header'>" +
-        "  <h4>"+idNum+"번 대기</h4>" +
-        "</div>" +
-        "<ul class='player-list' id='doing"+idNum+"'>" +
-        "</ul>" +
-        "</li>";
+    el.className += " ex-moved";
+    if(el.classList.contains('player')){
+      if("scheduled" == target.id){
+        var match = makeMatch('scheduled');
+        match.appendTo('#scheduled');
+        drake.containers.push(match.find('ul.player-list')[0]);
+        $(el).appendTo(match.find('ul.player-list'));
+        drake.cancel();
+      }else if(target.classList.contains('player-list')){
+        var memberCnt = $(target).find('li').length;
+        if(memberCnt > 4){
+          alert("게임은 4인 1조 입니다.")
+          drake.cancel(true);
+        }else if(memberCnt == 4){
+          console.log("시작버튼 노출");
+          var btn = makeStartButtonDiv();
+          btn.appendTo($(target).parent());
+        }
 
-      //drake.remove();
+      }
+      
+      if(source.classList.contains('player-list')){
+        var memberCnt = $(source).find('li.player').length;
+        if(memberCnt == 0){
+          $(source).parent().remove();
+        }else if(memberCnt < 4){
+          $(source).parent().find('div.column-button').remove();
+        }
+      }
     }
     
   })
@@ -37,6 +50,13 @@ var drake = dragula([
     container.className.replace(" ex-over", "");
   });
 
+//document.getElementById("scheduled1"),
+$('ul#scheduled ul.player-list').each(function(index, item){
+  drake.containers.push(item);
+})
+
+//drake.containers.push($('ul#scheduled ul.player-list'));
+
 /* Vanilla JS to add a new player */
 function addGuest() {
   /* Get player text from input */
@@ -46,7 +66,7 @@ function addGuest() {
     return false;
   } 
   /* Add player to the 'To Do' column */
-  document.getElementById("done").innerHTML +=
+  document.getElementById("member").innerHTML +=
     "<li class='player'><p>" + inputGuest + "</p></li>";
   /* Clear player text from input after adding player */
   document.getElementById("guestText").value = "";
@@ -62,7 +82,7 @@ function emptyTrash() {
   document.getElementById("waiting").innerHTML = "";
 }
 
-$('button[name="startGame"]').click(function(){
+$(document).on('click', 'button[name="startGame"]', function(){
   var match = makeMatch('playing');
   match.appendTo('#playing');
   $(this).parent().parent().find('li.player').appendTo(match.find('.player-list'));
@@ -82,16 +102,30 @@ $(document).on('click', 'button[name="endGame"]', function(){
 
 function makeMatch(type){
   var idNum = $('#'+type).find('.column').length+1;
+  var title = type == 'playing' ? '게입' : '대기';
+  var buttonText = type == 'playing' ? '종료' : '시작';
+  var buttonName = type == 'playing' ? 'endGame' : 'startGame';
+  var buttonClass = type == 'playing' ? 'delete-button' : 'add-button';
   var $match = $("<li class='column "+type+"-column'>" +
   "<div class='column-header'>" +
-  "  <h4>"+idNum+"번 대기</h4>" +
+  "  <h4>"+idNum+"번 "+title+"</h4>" +
   "</div>" +
   "<ul class='player-list' id='" + type +idNum+"'>" +
   "</ul>" +
   "<div class='column-button'>" +
-  "  <button class='button delete-button' name='endGame'>종료</button>" +
+  "  <button class='button "+buttonClass+"' name='"+buttonName+"'>"+buttonText+"</button>" +
   "</div>" +
   "</li>");
   
   return $match;
+}
+
+function makeStartButtonDiv(){
+  var $buttonDiv = $(
+  "<div class='column-button'>" +
+  "  <button class='button add-button' name='startGame'>시작</button>" +
+  "</div>" +
+  "</li>");
+  
+  return $buttonDiv;
 }
