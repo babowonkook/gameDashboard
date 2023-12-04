@@ -72,6 +72,7 @@ footer {
   -ms-flex-align: start;
   align-items: flex-start;
   margin: 1.6rem auto;
+  min-height: 15rem;
 }
 
 .column {

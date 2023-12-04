@@ -27,7 +27,7 @@ var drake = dragula([
         }else if(memberCnt == 4){
           console.log("시작버튼 노출");
           if($(target).parent().find('div.column-button').length == 0){
-            var btn = makeStartButtonDiv();
+            var btn = makeStartButtonDiv('scheduled');
             btn.appendTo($(target).parent());
           }
         }
@@ -103,29 +103,26 @@ $(document).on('click', 'button[name="endGame"]', function(){
 function makeMatch(type){
   var idNum = $('#'+type).find('.column').length+1;
   var title = type == 'playing' ? '게입' : '대기';
-  var buttonText = type == 'playing' ? '종료' : '시작';
-  var buttonName = type == 'playing' ? 'endGame' : 'startGame';
-  var buttonClass = type == 'playing' ? 'delete-button' : 'add-button';
+  var btn = type == 'playing' ? makeStartButtonDiv(type) : null;
   var $match = $("<li class='column "+type+"-column'>" +
   "<div class='column-header'>" +
   "  <h4>"+idNum+"번 "+title+"</h4>" +
   "</div>" +
   "<ul class='player-list' id='" + type +idNum+"'>" +
   "</ul>" +
-  "<div class='column-button'>" +
-  "  <button class='button "+buttonClass+"' name='"+buttonName+"'>"+buttonText+"</button>" +
-  "</div>" +
   "</li>");
-  
+  $match.append(btn);
   return $match;
 }
 
-function makeStartButtonDiv(){
+function makeStartButtonDiv(type){
+  var buttonText = type == 'playing' ? '종료' : '시작';
+  var buttonName = type == 'playing' ? 'endGame' : 'startGame';
+  var buttonClass = type == 'playing' ? 'delete-button' : 'add-button';
   var $buttonDiv = $(
   "<div class='column-button'>" +
-  "  <button class='button add-button' name='startGame'>시작</button>" +
-  "</div>" +
-  "</li>");
+  "  <button class='button "+buttonClass+"' name='"+buttonName+"'>"+buttonText+"</button>" +
+  "</div>");
   
   return $buttonDiv;
 }
