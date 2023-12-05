@@ -17,7 +17,8 @@
  -->
 
 <div class="app-layout">
-  <div class="playing box">게임중
+  <div class="playing box">
+    <div class="box-title">게임중</div>
     <ul id="playing" class="columns">
 
       <li class="column playing-column">
@@ -67,7 +68,8 @@
       </li>
     </ul>
   </div>
-  <div class="scheduled box">게임 예정
+  <div class="scheduled box">
+    <div class="box-title">게임 예정</div>
     <ul id="scheduled" class="columns">
       <li class="column scheduled-column">
         <div class="column-header">
@@ -111,13 +113,12 @@
     </ul>
 
   </div>
-  <div class="members box">턴누리 회원
+  <div class="members box">
+    <div class="box-title">턴누리 회원</div>
     <ul class="columns">
       <li class="column member-column">
-        <div class="column-header">
-          <h4>member</h4>
-        </div>
-        <ul class="column-list" id="member">
+
+        <ul class="column-list member-pool" id="member">
           <li class="player">
             <p>홍양용</p>
           </li>
@@ -153,18 +154,17 @@
     </div>
 
   </div>
-  <div class="waitting box">대기
+  <div class="waitting box">
+    <div class="box-title">대기</div>
     <ul class="columns">
       <li class="column waiting-column">
-        <div class="column-header">
-          <h4>대기</h4>
-        </div>
-        <ul class="column-list" id="waiting">
+
+        <ul class="column-list member-pool" id="waiting">
           <li class="player">
-            <p>Interviews</p>
+            <p>초롱이</p>
           </li>
           <li class="player">
-            <p>Research</p>
+            <p>문돼</p>
           </li>
         </ul>
       </li>
