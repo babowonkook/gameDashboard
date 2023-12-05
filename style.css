@@ -102,17 +102,13 @@ footer {
   background: #13a4d9;
 }
 
-.member-column .column-header {
-  background: #15d072;
-}
-
-.waiting-column .column-header {
-  background: #ff4444;
-}
-
 .player-list {
   min-height: 3rem;
   min-width: 15rem;
+}
+
+.member-pool{
+  width: 100%
 }
 
 ul {
@@ -128,6 +124,8 @@ li {
 .column-button {
   text-align: center;
   padding: 0.1rem;
+  margin-left: auto;
+  margin-right: 0.2rem;
 }
 
 .button {
@@ -235,10 +233,14 @@ li {
   background-color: #efefef;
 }
 
+.box-title {
+  font-weight:bold;
+}
+
 .playing   { background-color: #A2DED0; }
 .scheduled  { background-color: #F4D03F; }
-.members { background-color: #59ABE3; }
-.waitting { background-color: #ffba7f; }
+.members { background-color: #13a4d9; }
+.waitting { background-color: #ff872f; }
 
 /* Our Grid Code */
 .app-layout {
