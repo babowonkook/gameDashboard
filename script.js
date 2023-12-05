@@ -25,7 +25,6 @@ var drake = dragula([
           alert("게임은 4인 1조 입니다.")
           drake.cancel(true);
         }else if(memberCnt == 4){
-          console.log("시작버튼 노출");
           if($(target).parent().find('div.column-button').length == 0){
             var btn = makeStartButtonDiv('scheduled');
             btn.appendTo($(target).parent());
