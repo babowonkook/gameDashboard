@@ -41,6 +41,8 @@ var drake = dragula([
           $(source).parent().find('div.column-button').remove();
         }
       }
+    }else if(el.classList.contains('column')){
+      reNumber('scheduled');
     }
     
   })
@@ -86,22 +88,18 @@ $(document).on('click', 'button[name="startGame"]', function(){
   match.appendTo('#playing');
   $(this).parent().parent().find('li.player').appendTo(match.find('.player-list'));
   $(this).parents('.scheduled-column').remove();
+  reNumber('scheduled');
 });
-
-
-// $('button[name="endGame"]').click(function(){
-//   $(this).parent().parent().find('li.player').appendTo('#waiting');
-//   $(this).parents('.playing-column').remove();
-// });
 
 $(document).on('click', 'button[name="endGame"]', function(){
   $(this).parent().parent().find('li.player').appendTo('#waiting');
   $(this).parents('.playing-column').remove();
+  reNumber("playing");
 });
 
 function makeMatch(type){
   var idNum = $('#'+type).find('.column').length+1;
-  var title = type == 'playing' ? '게입' : '대기';
+  var title = type == 'playing' ? '게임' : '대기';
   var btn = type == 'playing' ? makeStartButtonDiv(type) : null;
   var $match = $("<li class='column "+type+"-column'>" +
   "<div class='column-header'>" +
@@ -124,4 +122,13 @@ function makeStartButtonDiv(type){
   "</div>");
   
   return $buttonDiv;
+}
+
+function reNumber(type){
+  var games =$('ul#'+type).find('li.column');
+  var idNum = 0;
+  var title = type == 'playing' ? '게임' : '대기';
+  games.each(function(index, item){
+    $(item).find('div h4').text(++idNum+"번 "+title)
+})
 }
