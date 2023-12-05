@@ -108,7 +108,8 @@ footer {
 }
 
 .member-pool{
-  width: 100%
+  width: 100%;
+  min-height: 43vh;
 }
 
 ul {
