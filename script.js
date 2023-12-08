@@ -4,21 +4,19 @@ var drake = dragula([
   document.getElementById("waiting"),
   document.getElementById("scheduled")
 ]).on("drag", function(el) {
-    el.className.replace(" ex-moved", "");
   })
   .on("drop", function(el, target, source, sibling) {
     // el: 드래그하고 있는 요소
     // target: el이 드래그 후 놓아진 리스트 요소
     // sibling: 자리에 놓았을 때, 바로 그 다음 요소
     // source: 원래 el이 있던 리스트 요소
-    el.className += " ex-moved";
     if(el.classList.contains('player')){
-      if("scheduled" == target.id){
+      if("scheduled" == target.id || (sibling != null && sibling.classList.contains('scheduled-column'))){
         var match = makeMatch('scheduled');
         match.appendTo('#scheduled');
         drake.containers.push(match.find('ul.player-list')[0]);
         $(el).appendTo(match.find('ul.player-list'));
-        drake.cancel();
+        // drake.cancel();
       }else if(target.classList.contains('player-list')){
         var memberCnt = $(target).find('li').length;
         if(memberCnt > 4){
@@ -42,15 +40,16 @@ var drake = dragula([
         }
       }
     }else if(el.classList.contains('column')){
+      if(target.classList.contains('player-list')){
+        drake.cancel(true);
+      }
       reNumber('scheduled');
     }
     
   })
   .on("over", function(el, container) {
-    container.className += " ex-over";
   })
   .on("out", function(el, container) {
-    container.className.replace(" ex-over", "");
   });
 
 //document.getElementById("scheduled1"),
@@ -105,7 +104,7 @@ function makeMatch(type){
   "<div class='column-header'>" +
   "  <h4>"+idNum+"번 "+title+"</h4>" +
   "</div>" +
-  "<ul class='player-list' id='" + type +idNum+"'>" +
+  "<ul class='player-list'>" +
   "</ul>" +
   "</li>");
   $match.append(btn);
