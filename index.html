@@ -18,7 +18,53 @@
 
 <div class="app-layout">
   <div class="playing box">
-    <div class="box-title">게임중</div>
+    <div class="box-title">게임 예정</div>
+    <ul id="scheduled" class="columns">
+      <li class="column scheduled-column">
+        <div class="column-header">
+          <h4>1번 대기</h4>
+        </div>
+        <ul class="player-list">
+          <li class="player">
+            <p>박부국</p>
+            <p>50B</p>
+            <p>1</p>
+          </li>
+          <li class="player">
+            <p>민호성</p>
+          </li>
+          <li class="player">
+            <p>변용섭</p>
+          </li>
+          <li class="player">
+            <p>이석봉</p>
+          </li>
+        </ul>
+        <div class="column-button">
+          <button class="button add-button" name="startGame">시작</button>
+        </div>
+      </li>
+
+      <li class="column scheduled-column">
+        <div class="column-header">
+          <h4>2번 대기</h4>
+        </div>
+        <ul class="player-list">
+          <li class="player">
+            <p>이상진</p>
+          </li>
+          <li class="player">
+            <p>허어녕</p>
+          </li>
+          <li class="player">
+            <p>박정택</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="scheduled box">
+    <div class="box-title">게임 중</div>
     <ul id="playing" class="columns">
 
       <li class="column playing-column">
@@ -65,50 +111,6 @@
         <div class="column-button">
           <button class="button delete-button" name="endGame">종료</button>
         </div>
-      </li>
-    </ul>
-  </div>
-  <div class="scheduled box">
-    <div class="box-title">게임 예정</div>
-    <ul id="scheduled" class="columns">
-      <li class="column scheduled-column">
-        <div class="column-header">
-          <h4>1번 대기</h4>
-        </div>
-        <ul class="player-list" id="scheduled1">
-          <li class="player">
-            <p>박부국</p>
-          </li>
-          <li class="player">
-            <p>민호성</p>
-          </li>
-          <li class="player">
-            <p>변용섭</p>
-          </li>
-          <li class="player">
-            <p>이석봉</p>
-          </li>
-        </ul>
-        <div class="column-button">
-          <button class="button add-button" name="startGame">시작</button>
-        </div>
-      </li>
-
-      <li class="column scheduled-column">
-        <div class="column-header">
-          <h4>2번 대기</h4>
-        </div>
-        <ul class="player-list" id="scheduled2">
-          <li class="player">
-            <p>이상진</p>
-          </li>
-          <li class="player">
-            <p>허어녕</p>
-          </li>
-          <li class="player">
-            <p>박정택</p>
-          </li>
-        </ul>
       </li>
     </ul>
 
